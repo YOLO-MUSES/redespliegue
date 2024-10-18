@@ -18,7 +18,10 @@ app.use(cors({
     origin: process.env.PATHHEROKU || '*',
     methods: ['GET', 'POST']
 }));
-
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).send('Algo salió mal: ' + err.message);
+});
 app.set("trust proxy", 1); // Si estás detrás de un proxy (Heroku o Nginx), habilita esta opción.
 
 // Configuración de la sesión
@@ -59,7 +62,7 @@ passport.deserializeUser(async (user, done) => {
 // Configuración de Handlebars
 const hbs = create({
     extname: 'hbs',
-    layoutsDir: 'Views/layouts', // Esta debe ser una cadena
+    layoutsDir: 'Views/Layouts', // Esta debe ser una cadena
     partialsDir: 'Views/Components', // También debe ser una cadena
     defaultLayout: 'main' // Nombre del archivo de layout sin la extensión
 });
