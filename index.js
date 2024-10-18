@@ -65,7 +65,7 @@ app.engine('hbs', hbs.engine);
 hbs.handlebars.registerHelper('allowProtoPropertiesByDefault', true);
 hbs.handlebars.registerHelper('allowProtoMethodsByDefault', true);
 app.set('view engine', 'hbs');
-app.set('Views', './Views');
+app.set('views', './Views');
 
 // Middleware para leer datos del formulario
 app.use(express.urlencoded({ extended: false }));
@@ -75,8 +75,9 @@ app.use(express.json());
 app.use(mongosanitize()); // Evitar inyecciones en MongoDB
 
 // Rutas principales
-app.use('/', require('./Routes/homeRoutes'));
 app.use('/auth', require('./Routes/auth'));
+app.use('/', require('./Routes/homeRoutes'));
+
 
 // Archivos estáticos
 app.use(express.static(__dirname + '/public'));
