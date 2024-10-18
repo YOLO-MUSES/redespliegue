@@ -61,7 +61,7 @@ const hbs = create({
     extname: 'hbs',
     layoutsDir: 'Views/layouts', // Esta debe ser una cadena
     partialsDir: 'Views/Components', // También debe ser una cadena
-    defaultLayout: 'Main' // Nombre del archivo de layout sin la extensión
+    defaultLayout: 'main' // Nombre del archivo de layout sin la extensión
 });
 
 app.engine('hbs', hbs.engine);
