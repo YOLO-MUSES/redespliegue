@@ -1,0 +1,43 @@
+<h1>reseñas y comentarios de {{usuario.userName}}</h1>
+<div class="container mt-5">
+    <h2>Agregar Comentario</h2>
+ <form action="/addComment" method="POST">
+    <div class="form-group" hidden="true">
+        <label for="profileId">ID de Perfil</label>
+        <input type="text" value="{{usuario._id}}" class="form-control" id="profileId" name="profileId" required>
+    </div>
+    <div class="form-group">
+        <label for="stars">Calificación (1-5)</label>
+        <select class="form-control" id="stars" name="stars" required>
+            <option value="" disabled selected>Selecciona estrellas</option>
+            <option value="1">★</option>
+            <option value="2">★★</option>
+            <option value="3">★★★</option>
+            <option value="4">★★★★</option>
+            <option value="5">★★★★★</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="commentaries">Comentario</label>
+        <textarea class="form-control" name="commentaries" rows="3" required></textarea>
+    </div>
+    <button type="submit" class="btn btn-success">Agregar Comentario</button>
+</form>
+<div>
+    <h2>Comentarios</h2>
+    <div class="row">
+        {{#each comments}}
+            <div class="col-md-9 mb-6"> <!-- Cambia el tamaño según lo necesites -->
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Calificación: {{this.stars}} ★</h5>
+                        <p class="card-text">{{this.commentaries}}</p>
+                        <footer class="blockquote-footer">
+                           Usuario: {{this.userId.userName}} <!-- Asegúrate de que el campo existe en el comentario -->
+                        </footer>
+                    </div>
+                </div>
+            </div>
+        {{/each}}
+    </div>
+</div>

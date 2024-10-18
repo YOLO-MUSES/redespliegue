@@ -1,0 +1,24 @@
+<!-- Botón para mostrar/ocultar el formulario -->
+<button id="toggleFormBtn" class="btn btn-primary" style="margin: 20px 0;">Subir Imagen</button>
+
+<!-- Formulario para subir la imagen y el título -->
+<div id="imageUploadForm" style="display: none; margin: 70px 0;">
+    <form action="/" method="post" enctype="multipart/form-data">
+        <label for="formFile" class="form-label">Sube tu imagen</label>
+        <input class="form-control" type="file" id="formFile" name="myFile" required> <!-- 'required' para que el archivo sea obligatorio -->
+        
+        <div class="titulos">
+            <input value="tolo" type="text" placeholder="Ingrese un título para su publicación" name="Names" id="Names" class="form-control my-2" required> <!-- 'required' para que el título sea obligatorio -->
+        </div>
+        
+        <button class="btn btn-success w-100 mb-2">Subir URL</button>
+    </form>
+</div>
+
+<script>
+document.getElementById('toggleFormBtn').onclick = function() {
+    const form = document.getElementById('imageUploadForm');
+    form.style.display = form.style.display === 'none' ? 'block' : 'none'; // Alternar la visibilidad del formulario
+};
+</script>
+

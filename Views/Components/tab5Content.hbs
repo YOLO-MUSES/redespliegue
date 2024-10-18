@@ -1,0 +1,19 @@
+<h2>Ventas Realizadas</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Productos</th>
+            <th>Total</th>
+            <th>Fecha</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each ventas}}
+        <tr>
+            <td>{{this.products}}</td> <!-- Mostrar los productos como texto -->
+            <td>${{this.total}}</td>
+            <td>{{this.date}}</td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>

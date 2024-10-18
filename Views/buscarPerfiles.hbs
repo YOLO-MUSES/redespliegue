@@ -1,0 +1,49 @@
+<form class="d-flex" style="margin: 70px 0;" action="/sugerencias" method="GET">
+  <input
+    class="form-control me-2"
+    type="search"
+    name="q"
+    id="search-input"
+    placeholder="Search"
+    aria-label="Search"
+    autocomplete="off"
+  />
+  <datalist id="suggestionsList"></datalist>
+  <button class="btn btn-outline-success" type="submit">Search</button>
+</form>
+
+{{#if successMessage}}
+        <script>
+            document.getElementById('successPopup').style.display = 'block';
+            document.getElementById('popupMessage').textContent = '{{successMessage}}';
+        </script>
+    {{/if}}
+
+    {{#if errorMessage}}
+        <script>
+            document.getElementById('errorPopup').style.display = 'block';
+            document.getElementById('errorMessage').textContent = '{{errorMessage}}';
+        </script>
+    {{/if}}
+<script>
+  document.getElementById('search-input').addEventListener('input', async function () {
+    const query = this.value;
+    if (query.length >= 2) {
+      try {
+        const response = await fetch(`/sugerencias?q=${query}`);
+        const data = await response.json();
+        
+        const dataList = document.getElementById('suggestionsList');
+        dataList.innerHTML = ''; // Clear previous suggestions
+
+        data.forEach(suggestion => {
+          const option = document.createElement('option');
+          option.value = suggestion;
+          dataList.appendChild(option);
+        });
+      } catch (error) {
+        console.error('Error fetching suggestions:', error);
+      }
+    }
+  });
+</script>

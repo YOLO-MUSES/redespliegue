@@ -1,0 +1,18 @@
+<div>
+    <h2>Comentarios</h2>
+    <div class="row">
+        {{#each comments}}
+            <div class="col-md-9 mb-6"> <!-- Cambia el tamaño según lo necesites -->
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Calificación: {{this.stars}} ★</h5>
+                        <p class="card-text">{{this.commentaries}}</p>
+                        <footer class="blockquote-footer">
+                           Usuario: {{this.userId.userName}} <!-- Asegúrate de que el campo existe en el comentario -->
+                        </footer>
+                    </div>
+                </div>
+            </div>
+        {{/each}}
+    </div>
+</div>

@@ -1,0 +1,15 @@
+<!--{{#if publics}}
+<form action="/editar/{{publics._id}}" method="post">
+<input type="hidden" name="_csrf" value="{{csrfToken}}">
+<input value="{{publics.origin}}" type="text" placeholder="ingrese url" name="origin" id="origin" class="form-control my-2">
+<button class="btn btn-warning w-100 mb-2">editar</button>
+</form>
+{{else}}
+
+<form action="/" method="post">
+<input type="hidden" name="_csrf" value="{{csrfToken}}">
+<input type="text" placeholder="ingrese url" name="origin" id="origin" class="form-control my-2">
+<button class="btn btn-success w-100 mb-2">subir url</button>
+</form>
+
+{{/if}}-->

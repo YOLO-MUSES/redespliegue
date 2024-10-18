@@ -1,0 +1,6 @@
+
+<div class="card" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; justify-items: center; align-items: center;">
+    <a href="{{this._id}}">{{this.userName}}</a> <!-- Cambiado a "this" para acceder al contexto actual -->
+    <p>{{this.email}}</p>
+    <a href="https://wa.me/{{this.telefono}} " target="_blank">Enviar mensaje a {{this.userName}}</a>
+</div>
